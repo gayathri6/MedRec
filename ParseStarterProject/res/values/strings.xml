@@ -9,10 +9,17 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="username">username</string>
-    <string name="email">username</string>
-    <string name="password">username</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
     <string name="welcome">Welcome %1$s!</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_record_symptom">RecordSymptomActivity</string>
+    
+    <string name="allergies">Any specific allergies?</string>
+    <string name="longTermIllness">What about long term illnesses?</string>
+    <string name="height">What is your height?</string>
+    <string name="weight">And... weight?</string>
+    <string name="dob">When were you born?</string>
+    <string name="user">user</string>
 
 </resources>
