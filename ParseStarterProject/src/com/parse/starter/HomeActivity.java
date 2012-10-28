@@ -45,7 +45,7 @@ public class HomeActivity  extends TabActivity   {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_home, menu);
+		getMenuInflater().inflate(R.menu.patientmenu, menu);
 		return true;
 	}
 }

@@ -21,5 +21,6 @@
     <string name="weight">And... weight?</string>
     <string name="dob">When were you born?</string>
     <string name="user">user</string>
+    <string name="set_preferences">Profile</string>
 
 </resources>

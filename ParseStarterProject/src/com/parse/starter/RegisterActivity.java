@@ -7,22 +7,18 @@ import com.parse.SignUpCallback;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
+	private static final String TAG = "Register Activity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_register, menu);
-        return true;
     }
     
     /** Register User */
@@ -45,7 +41,6 @@ public class RegisterActivity extends Activity {
     	 
     	// other fields can be set just like with ParseObject
     	//user.put("phone", "650-253-0000");
-    	
 		
     	user.signUpInBackground(new SignUpCallback() {
     	  public void done(ParseException e) {
@@ -54,9 +49,9 @@ public class RegisterActivity extends Activity {
     	    	Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
     	    	startActivity(homeIntent);
     	    } else {
-    	      // Sign up didn't succeed. Look at the ParseException
-    	      // to figure out what went wrong
-    	    	
+    	    	// Sign up didn't succeed. Look at the ParseException to figure out what went wrong
+    	    	Toast.makeText(getApplicationContext(), "Login Failed. Incorrect Username/Password.", Toast.LENGTH_SHORT).show();
+				Log.d(TAG , e.getMessage());    	    	
     	    }
     	  }
     	});

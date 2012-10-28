@@ -50,11 +50,9 @@ public final class R {
         public static final int activity_register=0x7f030004;
     }
     public static final class menu {
-        public static final int activity_home=0x7f050000;
-        public static final int activity_login=0x7f050001;
-        public static final int activity_profile=0x7f050002;
-        public static final int activity_record_symptom=0x7f050003;
-        public static final int activity_register=0x7f050004;
+        public static final int activity_profile=0x7f050000;
+        public static final int activity_record_symptom=0x7f050001;
+        public static final int patientmenu=0x7f050002;
     }
     public static final class string {
         public static final int allergies=0x7f04000d;
@@ -67,6 +65,7 @@ public final class R {
         public static final int longTermIllness=0x7f04000e;
         public static final int menu_settings=0x7f040003;
         public static final int password=0x7f040009;
+        public static final int set_preferences=0x7f040013;
         public static final int title_activity_home=0x7f040006;
         public static final int title_activity_login=0x7f040004;
         public static final int title_activity_profile=0x7f04000b;

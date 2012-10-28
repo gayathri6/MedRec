@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class ParseStarterProjectActivity extends Activity {
+public class MainActivity extends Activity {
 
 
 	/** Called when the activity is first created. */
@@ -28,57 +28,12 @@ public class ParseStarterProjectActivity extends Activity {
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		if (currentUser.getUsername() != null) {
 			// do stuff with the user
-			Intent intent = new Intent(this, HomeActivity.class);
-			startActivity(intent);
+			Intent homeActivity = new Intent(this, HomeActivity.class);
+			startActivity(homeActivity);
 		} else {
-
 			// Show the sign up or login screen
-			setContentView(R.layout.activity_login);
-
-			Log.d("loginact" , "Inside login activity");
-			TextView loginButton = (TextView) findViewById(R.id.btnLogin);
-			
-			// Listening to LOGIN button click
-			loginButton.setOnClickListener(new View.OnClickListener() {
-	            
-				@Override
-				public void onClick(View v) {
-					Log.d("login clicked" , "Login button clicked!");
-					EditText editTextUserName = (EditText) findViewById(R.id.login_username);
-					String username = editTextUserName.getText().toString();
-
-					EditText editTextPassword = (EditText) findViewById(R.id.login_username);
-					String password = editTextPassword.getText().toString();
-
-					ParseUser.logInInBackground(username, password, new LogInCallback() {
-						public void done(ParseUser user, ParseException e) {
-							if (user != null) {
-								Log.d("info" , "User succesfully logged in!");
-								// Hooray! The user is logged in.
-								Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
-								startActivity(homeIntent);
-
-							} else {
-								// Signup failed. Look at the ParseException to see what happened.
-								Log.d("error" , e.getMessage());
-							}
-						}
-					});
-				}
-			});
-			
-			TextView registerScreen = (TextView) findViewById(R.id.link_to_register);
-
-			// Listening to register new account link
-			registerScreen.setOnClickListener(new View.OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					// Switching to Register screen
-					Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-					startActivity(i);
-				}
-			});
+			Intent intent = new Intent(this, LoginActivity.class);
+			startActivity(intent);
 		} 
 /*
 		ParseACL roleDoctorACL = new ParseACL();
@@ -171,11 +126,5 @@ public class ParseStarterProjectActivity extends Activity {
 			}
 		}); */
 
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
 	}
 }
