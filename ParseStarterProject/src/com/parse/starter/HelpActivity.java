@@ -5,19 +5,40 @@ import com.parse.ParseUser;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-public class ProfileActivity extends Activity {
+public class HelpActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_help);
        
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.helpmenu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+      switch (item.getItemId()) {
+      case R.id.profile:
+        Intent profileActivity = new Intent(this, ProfileActivity.class);
+        startActivity(profileActivity); 
+        break;
+      default:
+        break;
+      }
+      return true;
+      }
     
     public void createProfile(View view){
     	

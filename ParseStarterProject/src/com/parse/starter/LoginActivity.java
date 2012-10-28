@@ -46,7 +46,7 @@ public class LoginActivity extends Activity {
 					if (user != null) {
 						Log.d("info" , "User succesfully logged in!");
 						// Hooray! The user is logged in.
-						Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+						Intent homeIntent = new Intent(getApplicationContext(), PatientHomeActivity.class);
 						startActivity(homeIntent);
 
 					} else {

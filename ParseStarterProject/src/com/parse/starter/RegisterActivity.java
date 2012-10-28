@@ -46,7 +46,7 @@ public class RegisterActivity extends Activity {
     	  public void done(ParseException e) {
     	    if (e == null) {
     	      // Hooray! Let them use the app now.
-    	    	Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+    	    	Intent homeIntent = new Intent(getApplicationContext(), PatientHomeActivity.class);
     	    	startActivity(homeIntent);
     	    } else {
     	    	// Sign up didn't succeed. Look at the ParseException to figure out what went wrong

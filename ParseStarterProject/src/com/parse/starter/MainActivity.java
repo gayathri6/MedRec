@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		if (currentUser.getUsername() != null) {
 			// do stuff with the user
-			Intent homeActivity = new Intent(this, HomeActivity.class);
+			Intent homeActivity = new Intent(this, PatientHomeActivity.class);
 			startActivity(homeActivity);
 		} else {
 			// Show the sign up or login screen
@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 		ParseACL roleDoctorACL = new ParseACL();
 		roleDoctorACL.setPublicReadAccess(true);
 		ParseRole roleDoctor = new ParseRole("Doctor", roleDoctorACL);
-		final Intent intent = new Intent(this, HomeActivity.class);
+		final Intent intent = new Intent(this, PatientHomeActivity.class);
 		roleDoctor.saveInBackground(new SaveCallback() {
 			public void done(ParseException e) {
 				// Now let's update it with some new data. In this case, only cheatMode and score
@@ -116,7 +116,7 @@ public class MainActivity extends Activity {
 		ParseACL rolePatientACL = new ParseACL();
 		rolePatientACL.setPublicReadAccess(true);
 		ParseRole rolePatient = new ParseRole("Patient", rolePatientACL);
-		final Intent intent = new Intent(this, HomeActivity.class);
+		final Intent intent = new Intent(this, PatientHomeActivity.class);
 		rolePatient.saveInBackground(new SaveCallback() {
 			public void done(ParseException e) {
 				// Now let's update it with some new data. In this case, only cheatMode and score

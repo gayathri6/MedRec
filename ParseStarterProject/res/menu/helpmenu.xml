@@ -3,8 +3,4 @@
         android:title="@string/profile"
         android:showAsAction="ifRoom" 
         android:icon="@drawable/profileicon"/>
-    <item android:id="@+id/help"
-        android:title="@string/help"
-        android:showAsAction="ifRoom" 
-        android:icon="@drawable/sickicon"/>
 </menu>
