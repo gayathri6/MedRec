@@ -14,26 +14,22 @@ public class DoctorHomeActivity  extends Activity   {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_patient_home);		
+		setContentView(R.layout.activity_doctor_home);		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.patientmenu, menu);
+		getMenuInflater().inflate(R.menu.doctormenu, menu);
 		return true;
 	}
 	
 	 @Override
 	    public boolean onOptionsItemSelected(MenuItem item) {
 	      switch (item.getItemId()) {
-	      case R.id.profile:
-	        Intent profileActivity = new Intent(this, ProfileActivity.class);
-	        startActivity(profileActivity); 
+	      case R.id.diagnosis:
+	        Intent diagnosisActivity = new Intent(this, DiagnosisActivity.class);
+	        startActivity(diagnosisActivity); 
 	        break;
-	      case R.id.help:
-		        Intent helpActivity = new Intent(this, HelpActivity.class);
-		        startActivity(helpActivity); 
-		        break;
 	      default:
 	        break;
 	      }

@@ -23,5 +23,6 @@
     <string name="user">user</string>
     <string name="set_preferences">Profile</string>
     <string name="help">Help</string>
+    <string name="diagnosis">Diagnosis</string>
 
 </resources>
