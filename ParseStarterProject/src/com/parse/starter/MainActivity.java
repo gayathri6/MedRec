@@ -35,55 +35,67 @@ public class MainActivity extends Activity {
 		/*//Doctor Roles
 		ParseACL roleDoctorACL = new ParseACL();
 		roleDoctorACL.setPublicReadAccess(true);
+		roleDoctorACL.setPublicWriteAccess(true);
 		ParseRole roleDoctor = new ParseRole("Doctor", roleDoctorACL);
+		roleDoctor.saveInBackground();
 
 		ParseACL roleDoctorPhyACL = new ParseACL();
 		roleDoctorPhyACL.setPublicReadAccess(true);
+		roleDoctorPhyACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorPhy = new ParseRole("Physician", roleDoctorPhyACL);
 		roleDoctorPhy.saveInBackground();
 
 		ParseACL roleDoctorPedACL = new ParseACL();
 		roleDoctorPedACL.setPublicReadAccess(true);
+		roleDoctorPedACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorPed = new ParseRole("Pediatrician", roleDoctorPedACL);
 		roleDoctorPed.saveInBackground();
 
 		ParseACL roleDoctorCardACL = new ParseACL();
 		roleDoctorCardACL.setPublicReadAccess(true);
+		roleDoctorCardACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorCard = new ParseRole("Cardiologist", roleDoctorCardACL);
 		roleDoctorCard.saveInBackground();
 
 		ParseACL roleDoctorGastroACL = new ParseACL();
 		roleDoctorGastroACL.setPublicReadAccess(true);
+		roleDoctorGastroACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorGastro = new ParseRole("Gastrologist", roleDoctorGastroACL);
 		roleDoctorGastro.saveInBackground();
 
 		ParseACL roleDoctorGynaeACL = new ParseACL();
 		roleDoctorGynaeACL.setPublicReadAccess(true);
+		roleDoctorGynaeACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorGynae = new ParseRole("Gynecologist", roleDoctorGynaeACL);
 		roleDoctorGynae.saveInBackground();
 
 		ParseACL roleDoctorPathACL = new ParseACL();
 		roleDoctorPathACL.setPublicReadAccess(true);
+		roleDoctorPathACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorPath = new ParseRole("Pathologist", roleDoctorPathACL);
 		roleDoctorPath.saveInBackground();
 
 		ParseACL roleDoctorOrthACL = new ParseACL();
 		roleDoctorOrthACL.setPublicReadAccess(true);
+		roleDoctorOrthACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorOrth = new ParseRole("Orthopedist", roleDoctorOrthACL);
 		roleDoctorOrth.saveInBackground();
 
 		ParseACL roleDoctorOpthACL = new ParseACL();
 		roleDoctorOpthACL.setPublicReadAccess(true);
+		roleDoctorOpthACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorOpth = new ParseRole("Ophthalmologist", roleDoctorOpthACL);
 		roleDoctorOpth.saveInBackground();
 
 		ParseACL roleDoctorDentACL = new ParseACL();
 		roleDoctorDentACL.setPublicReadAccess(true);
+		roleDoctorDentACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorDent = new ParseRole("Dentist", roleDoctorDentACL);
 		roleDoctorDent.saveInBackground();
 
 		ParseACL roleDoctorDermACL = new ParseACL();
 		roleDoctorDermACL.setPublicReadAccess(true);
+		roleDoctorDermACL.setPublicWriteAccess(true);
 		ParseRole roleDoctorDerm = new ParseRole("Dermatologist", roleDoctorDermACL);
 		roleDoctorDerm.saveInBackground();
 
@@ -102,6 +114,7 @@ public class MainActivity extends Activity {
 		//Patient Role
 		ParseACL rolePatientACL = new ParseACL();
 		rolePatientACL.setPublicReadAccess(true);
+		rolePatientACL.setPublicWriteAccess(true);
 		ParseRole rolePatient = new ParseRole("Patient", rolePatientACL);
 		rolePatient.saveInBackground();*/
 		 
