@@ -96,7 +96,7 @@
                 android:layout_marginBottom="40dip"
                 android:layout_marginTop="40dip"
                 android:gravity="center"
-                android:text="New to MedRec? Register here"
+                android:text="New to Home Health? Register here"
                 android:textColor="@android:color/white"
                 android:textSize="20dip"
                 />

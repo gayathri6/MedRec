@@ -1,30 +1,26 @@
 package com.parse.starter;
 
-import com.parse.LogInCallback;
+import com.parse.Parse;
 import com.parse.ParseACL;
-import com.parse.ParseException;
 import com.parse.ParseRole;
+import com.parse.PushService;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	private static final String YOUR_APPLICATION_ID = "vQyhiWo3htopZhxEX2t7pspvbB2vDRSSuPPAASuX";
+	private static final String YOUR_CLIENT_KEY = "JCtAgree2otOnZI1inaziB4tM0RrlNJoZMe5lDJ5";
 
 	/** Called when the activity is first created. */
 	@Override
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
+		
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		if (currentUser.getUsername() != null) {
 			// do stuff with the user
@@ -35,19 +31,11 @@ public class MainActivity extends Activity {
 			Intent intent = new Intent(this, LoginActivity.class);
 			startActivity(intent);
 		} 
-/*
+
+		/*//Doctor Roles
 		ParseACL roleDoctorACL = new ParseACL();
 		roleDoctorACL.setPublicReadAccess(true);
 		ParseRole roleDoctor = new ParseRole("Doctor", roleDoctorACL);
-		final Intent intent = new Intent(this, PatientHomeActivity.class);
-		roleDoctor.saveInBackground(new SaveCallback() {
-			public void done(ParseException e) {
-				// Now let's update it with some new data. In this case, only cheatMode and score
-				// will get sent to the Parse Cloud. playerName hasn't changed.
-
-				startActivity(intent);
-			}
-		});
 
 		ParseACL roleDoctorPhyACL = new ParseACL();
 		roleDoctorPhyACL.setPublicReadAccess(true);
@@ -111,20 +99,12 @@ public class MainActivity extends Activity {
 		roleDoctor.getRoles().add(roleDoctorPhy);
 		roleDoctor.saveInBackground();
 
-		 */
-/*
+		//Patient Role
 		ParseACL rolePatientACL = new ParseACL();
 		rolePatientACL.setPublicReadAccess(true);
 		ParseRole rolePatient = new ParseRole("Patient", rolePatientACL);
-		final Intent intent = new Intent(this, PatientHomeActivity.class);
-		rolePatient.saveInBackground(new SaveCallback() {
-			public void done(ParseException e) {
-				// Now let's update it with some new data. In this case, only cheatMode and score
-				// will get sent to the Parse Cloud. playerName hasn't changed.
-
-				startActivity(intent);
-			}
-		}); */
+		rolePatient.saveInBackground();*/
+		 
 
 	}
 }

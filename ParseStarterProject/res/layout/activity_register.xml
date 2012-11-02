@@ -58,6 +58,14 @@
                 android:layout_marginTop="5dip"
                 android:singleLine="true" />
             <!-- Email Label -->
+            
+            <Spinner
+			    android:id="@+id/rolesSpinner"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:entries="@array/roles"
+        		android:prompt="@string/role"	 
+			    />
 
             <TextView
                 android:layout_width="fill_parent"

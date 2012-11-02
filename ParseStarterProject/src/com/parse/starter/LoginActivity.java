@@ -1,7 +1,9 @@
 package com.parse.starter;
 
 import com.parse.LogInCallback;
+import com.parse.Parse;
 import com.parse.ParseUser;
+import com.parse.PushService;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -19,9 +21,14 @@ import com.parse.ParseException;
 public class LoginActivity extends Activity {
 	private static final String TAG = "Login Activity";
 
+	private static final String YOUR_APPLICATION_ID = "vQyhiWo3htopZhxEX2t7pspvbB2vDRSSuPPAASuX";
+	private static final String YOUR_CLIENT_KEY = "JCtAgree2otOnZI1inaziB4tM0RrlNJoZMe5lDJ5";
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
+		setTitle(R.string.app_name);
 
 		setContentView(R.layout.activity_login);
 		Log.d("loginact" , "Inside login activity");
