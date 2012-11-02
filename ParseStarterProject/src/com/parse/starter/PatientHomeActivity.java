@@ -1,6 +1,8 @@
 package com.parse.starter;
 
 import com.parse.ParseUser;
+import com.parse.Parse;
+import com.parse.PushService;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -10,10 +12,16 @@ import android.view.MenuItem;
 
 public class PatientHomeActivity  extends Activity   {
 
+	private static final String YOUR_APPLICATION_ID = "vQyhiWo3htopZhxEX2t7pspvbB2vDRSSuPPAASuX";
+	private static final String YOUR_CLIENT_KEY = "JCtAgree2otOnZI1inaziB4tM0RrlNJoZMe5lDJ5";
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_patient_home);		
+		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
+		setContentView(R.layout.activity_patient_home);	
+		setTitle(R.string.app_name);
+		
 	}
 
 	@Override
