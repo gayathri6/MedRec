@@ -7,4 +7,5 @@
         android:title="@string/help"
         android:showAsAction="ifRoom" 
         android:icon="@drawable/sickicon"/>
+    
 </menu>

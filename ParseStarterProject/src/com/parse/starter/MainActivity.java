@@ -22,8 +22,10 @@ public class MainActivity extends Activity {
 		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
 		
 		ParseUser currentUser = ParseUser.getCurrentUser();
+		ParseACL.setDefaultACL(new ParseACL(), true);
 		if (currentUser.getUsername() != null) {
 			// do stuff with the user
+			
 			Intent homeActivity = new Intent(this, PatientHomeActivity.class);
 			startActivity(homeActivity);
 		} else {

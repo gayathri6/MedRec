@@ -1,14 +1,48 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollHelp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".RecordSymptomActivity" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
 
-</RelativeLayout>
+        <!-- Put form controls here -->
+
+        <EditText
+            android:id="@+id/symptoms"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/symptoms"
+            android:inputType="textMultiLine"
+            android:lines="5" >
+        </EditText>
+        
+         <Spinner
+			    android:id="@+id/docRolesSpinner"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:entries="@array/doctorRoles"
+        		android:prompt="@string/doctorRole"	 
+			    />
+
+        <DatePicker
+            android:id="@+id/sympDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:minDate="01/01/1900" />
+
+        <Button
+            android:id="@+id/btnSymp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:onClick="saveSymptom"
+            android:text="Save thy symptom!" />
+    </LinearLayout>
+
+</ScrollView>

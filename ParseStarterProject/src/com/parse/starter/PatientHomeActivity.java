@@ -7,6 +7,7 @@ import com.parse.PushService;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,6 +15,7 @@ public class PatientHomeActivity  extends Activity   {
 
 	private static final String YOUR_APPLICATION_ID = "vQyhiWo3htopZhxEX2t7pspvbB2vDRSSuPPAASuX";
 	private static final String YOUR_CLIENT_KEY = "JCtAgree2otOnZI1inaziB4tM0RrlNJoZMe5lDJ5";
+	private static final String TAG = "Patient Home Activity";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class PatientHomeActivity  extends Activity   {
 	        startActivity(profileActivity); 
 	        break;
 	      case R.id.help:
+	    	    Log.i(TAG , "Inside patient home : Help activity");
 		        Intent helpActivity = new Intent(this, HelpActivity.class);
 		        startActivity(helpActivity); 
 		        break;

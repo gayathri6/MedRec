@@ -13,4 +13,17 @@
         <item>Dentist</item>
         <item>Dermatologist</item>
     </string-array>
+    
+       <string-array name="doctorRoles">
+        <item>Physician</item>
+        <item>Pediatrician</item>
+        <item>Cardiologist</item>
+        <item>Gastrologist</item>
+        <item>Gynecologist</item>
+        <item>Pathologist</item>
+        <item>Orthopedist</item>
+        <item>Ophthalmologist</item>
+        <item>Dentist</item>
+        <item>Dermatologist</item>
+    </string-array>
 </resources>

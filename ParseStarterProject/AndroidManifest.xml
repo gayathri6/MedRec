@@ -24,9 +24,9 @@
             </intent-filter>
         </activity>
         <activity
-        android:name=".SettingsActivity"
-        android:label="@string/set_preferences">
-		</activity>
+            android:name=".SettingsActivity"
+            android:label="@string/set_preferences" >
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" >
@@ -46,6 +46,10 @@
         <activity
             android:name=".RecordSymptomActivity"
             android:label="@string/title_activity_record_symptom" >
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/title_activity_help" >
         </activity>
     </application>
 

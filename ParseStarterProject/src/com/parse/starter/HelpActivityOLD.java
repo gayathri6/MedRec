@@ -23,7 +23,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
-public class HelpActivity extends Activity {
+public class HelpActivityOLD extends Activity {
 
 	private static final String YOUR_APPLICATION_ID = "vQyhiWo3htopZhxEX2t7pspvbB2vDRSSuPPAASuX";
 	private static final String YOUR_CLIENT_KEY = "JCtAgree2otOnZI1inaziB4tM0RrlNJoZMe5lDJ5";
@@ -38,9 +38,9 @@ public class HelpActivity extends Activity {
 		setTitle(R.string.app_name);
 	}
 
-	@SuppressLint("NewApi")
+	/*@SuppressLint("NewApi")
 	public void saveSymptom(View view){
-		Log.i(TAG, "Inside save symptom");
+		Log.i(TAG, "Inside create profile");
 		try
 		{
 			EditText editTextSymptoms = (EditText) findViewById(R.id.symptoms);
@@ -52,7 +52,7 @@ public class HelpActivity extends Activity {
 
 
 
-			Spinner doctorRolesSpinner = (Spinner) findViewById(R.id.docRolesSpinner);
+			Spinner doctorRolesSpinner = (Spinner) findViewById(R.id.doctorRolesSpinner);
 			final String doctorRole = String.valueOf(doctorRolesSpinner.getSelectedItem());
 
 
@@ -74,5 +74,5 @@ public class HelpActivity extends Activity {
 
 
 	}
-
+*/
 }
