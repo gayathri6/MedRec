@@ -20,10 +20,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
@@ -37,6 +39,9 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
         setContentView(R.layout.activity_register);
+        
+        TextView loginScreen = (TextView) findViewById(R.id.link_to_login);
+		loginScreen.setOnClickListener(loginClickListener);// Listening to register new account link
     }
     
     /** Register User */
@@ -93,4 +98,12 @@ public class RegisterActivity extends Activity {
     	// other fields can be set just like with ParseObject
     	//user.put("phone", "650-253-0000");
     }
+    
+    private OnClickListener loginClickListener = new OnClickListener() {
+		public void onClick(View v) {
+			// Switching to Register screen
+			Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+			startActivity(i);	
+		}
+	};
 }

@@ -31,7 +31,7 @@ public class LoginActivity extends Activity {
 		setTitle(R.string.app_name);
 
 		setContentView(R.layout.activity_login);
-		Log.d("loginact" , "Inside login activity");
+		Log.d(TAG, "Inside login activity");
 		TextView loginButton = (TextView) findViewById(R.id.btnLogin);
 		loginButton.setOnClickListener(loginClickListener);// Listening to LOGIN button click
 		
@@ -41,17 +41,17 @@ public class LoginActivity extends Activity {
 	
 	private OnClickListener loginClickListener = new OnClickListener() {
 		public void onClick(View v) {
-			Log.d("login clicked" , "Login button clicked!");
+			Log.d(TAG, "Login button clicked!");
 			EditText editTextUserName = (EditText) findViewById(R.id.login_username);
 			String username = editTextUserName.getText().toString();
 
-			EditText editTextPassword = (EditText) findViewById(R.id.login_username);
+			EditText editTextPassword = (EditText) findViewById(R.id.login_password);
 			String password = editTextPassword.getText().toString();
 
 			ParseUser.logInInBackground(username, password, new LogInCallback() {
 				public void done(ParseUser user, ParseException e) {
 					if (user != null) {
-						Log.d("info" , "User succesfully logged in!");
+						Log.d(TAG, "User succesfully logged in!");
 						// Hooray! The user is logged in.
 						Intent homeIntent = new Intent(getApplicationContext(), PatientHomeActivity.class);
 						startActivity(homeIntent);
