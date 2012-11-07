@@ -8,6 +8,7 @@ import com.parse.ParseUser;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import com.parse.PushService;
 
 public class MainActivity extends Activity {
 
@@ -20,6 +21,7 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
+		PushService.subscribe(this, "", MainActivity.class);
 		
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		ParseACL.setDefaultACL(new ParseACL(), true);
