@@ -7,6 +7,8 @@ import java.util.List;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
 import com.parse.PushService;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -70,20 +72,34 @@ public class RegisterActivity extends Activity {
       	    if (e == null) {
       	      // Hooray! Let them use the app now.
       	    	
-      	    	ParseQuery query = ParseRole.getQuery();
-      	    	query.whereEqualTo("name", userRole);
-      	    	query.findInBackground(new FindCallback() {
-      	    	    public void done(List<ParseObject> roles, ParseException e) {
-      	    	        if (e == null) {
-      	    	        	
-      	    	            ParseRole role = (ParseRole) roles.get(0);
-      	    	            role.getUsers().add(user);
-      	    	            role.saveInBackground();
-      	    	        } else {
-      	    	            Log.d(TAG, "Error: " + e.getMessage());
-      	    	        }
-      	    	    }
-      	    	});
+      	    	ParseObject request = new ParseObject("RoleRequest");
+      	    	request.put("email", user.getEmail());
+      	    	request.put("role", userRole);
+      	    	ParseACL ACL = new ParseACL();
+      	    	ACL.setRoleWriteAccess("Admin",true);
+      	    	ACL.setRoleReadAccess("Admin",true);
+      	    	request.setACL(ACL);
+      	    	request.saveInBackground();
+      	    	
+      	    	/*// Saving the device's owner
+      	    	ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+      	    	installation.put("owner",ParseUser.getCurrentUser());
+      	    	installation.put("user",user.getEmail());
+      	    	installation.saveInBackground();*/
+      	    	
+      	    	// Create our installation query
+      	    	ParseQuery pushQuery = ParseInstallation.getQuery();
+      	    	//pushQuery.whereEqualTo("user", "admin");
+      	    	 
+      	    	// Send push notification to query
+      	    	ParsePush push = new ParsePush();
+      	    	push.setQuery(pushQuery);
+      	    	push.setChannel("verifyingchannel"); // Set the channel
+      	    	push.setMessage("Please add user(s) to role(s).");
+      	    	push.sendInBackground();
+      	    	
+      	    	Toast.makeText(getApplicationContext(), "Registration Successful.\nPlease await notification for account approval.", Toast.LENGTH_LONG).show();
+      	    	//TODO: Signout user
       	    	
       	    	Intent homeIntent = new Intent(getApplicationContext(), PatientHomeActivity.class);
       	    	startActivity(homeIntent);
@@ -106,4 +122,79 @@ public class RegisterActivity extends Activity {
 			startActivity(i);	
 		}
 	};
+	
+	/*ParseACL roleAdminACL = new ParseACL();
+		roleAdminACL.setPublicReadAccess(true);
+		ParseRole roleAdmin = new ParseRole("Admin", roleAdminACL);
+		roleAdmin.saveInBackground();
+		roleAdmin.getUsers().add(user);roleAdmin.saveInBackground();
+  	
+  	ParseACL roleACL = new ParseACL();
+  	roleACL.setPublicReadAccess(true);
+  	roleACL.setRoleWriteAccess(roleAdmin,true);
+  	
+		ParseRole roleDoctor = new ParseRole("Doctor", roleACL);
+		roleDoctor.saveInBackground();
+
+		ParseRole roleDoctorPhy = new ParseRole("Physician", roleACL);
+		roleDoctorPhy.saveInBackground();
+
+		ParseRole roleDoctorPed = new ParseRole("Pediatrician", roleACL);
+		roleDoctorPed.saveInBackground();
+
+		ParseRole roleDoctorCard = new ParseRole("Cardiologist", roleACL);
+		roleDoctorCard.saveInBackground();
+
+		ParseRole roleDoctorGastro = new ParseRole("Gastrologist", roleACL);
+		roleDoctorGastro.saveInBackground();
+
+		ParseRole roleDoctorGynae = new ParseRole("Gynecologist", roleACL);
+		roleDoctorGynae.saveInBackground();
+
+		ParseRole roleDoctorPath = new ParseRole("Pathologist", roleACL);
+		roleDoctorPath.saveInBackground();
+
+		ParseRole roleDoctorOrth = new ParseRole("Orthopedist", roleACL);
+		roleDoctorOrth.saveInBackground();
+
+		ParseRole roleDoctorOpth = new ParseRole("Ophthalmologist", roleACL);
+		roleDoctorOpth.saveInBackground();
+
+		ParseRole roleDoctorDent = new ParseRole("Dentist", roleACL);
+		roleDoctorDent.saveInBackground();
+		
+		ParseRole roleDoctorDerm = new ParseRole("Dermatologist", roleACL);
+		roleDoctorDerm.saveInBackground();
+
+		roleDoctor.getRoles().add(roleDoctorDerm);
+		roleDoctor.getRoles().add(roleDoctorDent);
+		roleDoctor.getRoles().add(roleDoctorOpth);
+		roleDoctor.getRoles().add(roleDoctorOrth);
+		roleDoctor.getRoles().add(roleDoctorPath);
+		roleDoctor.getRoles().add(roleDoctorGynae);
+		roleDoctor.getRoles().add(roleDoctorGastro);
+		roleDoctor.getRoles().add(roleDoctorCard);
+		roleDoctor.getRoles().add(roleDoctorPed);
+		roleDoctor.getRoles().add(roleDoctorPhy);
+		roleDoctor.saveInBackground();
+
+		//Patient Role
+		ParseRole rolePatient = new ParseRole("Patient", roleACL);
+		rolePatient.saveInBackground();
+		Toast.makeText(getApplicationContext(), "Admin processing done.", Toast.LENGTH_LONG).show();
+  	
+  	ParseQuery query = ParseRole.getQuery();
+  	query.whereEqualTo("name", userRole);
+  	query.findInBackground(new FindCallback() {
+  	    public void done(List<ParseObject> roles, ParseException e) {
+  	        if (e == null) {
+  	        	
+  	            ParseRole role = (ParseRole) roles.get(0);
+  	            role.getUsers().add(user);
+  	            role.saveInBackground();
+  	        } else {
+  	            Log.d(TAG, "Error: " + e.getMessage());
+  	        }
+  	    }
+  	});*/
 }
