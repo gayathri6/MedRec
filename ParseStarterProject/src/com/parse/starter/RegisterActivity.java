@@ -87,7 +87,10 @@ public class RegisterActivity extends Activity {
       	    	installation.saveEventually();*/
       	    	
       	    	PushService.subscribe(getApplicationContext(), "verifyingchannel_"+user.getObjectId(), MainActivity.class);
-      	    	
+      	    	if(userRole.equals("Patient"))
+      	    		PushService.subscribe(getApplicationContext(), "patientchannel_"+user.getObjectId(), DiagnosisActivity.class);
+      	    	else
+      	    		PushService.subscribe(getApplicationContext(), "doctorchannel_"+user.getObjectId(), DoctorHomeActivity.class);  	    	
       	    	// Create our installation query
       	    	//ParseQuery pushQuery = ParseInstallation.getQuery();
       	    	//pushQuery.whereEqualTo("user", "admin");

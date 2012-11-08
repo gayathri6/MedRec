@@ -31,8 +31,6 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
-		PushService.subscribe(this, "patientchannel", DiagnosisActivity.class);
-		PushService.subscribe(this, "doctorchannel", DoctorHomeActivity.class);
 		
 		found=false;
 		
