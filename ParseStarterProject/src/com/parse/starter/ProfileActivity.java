@@ -24,6 +24,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.parse.ParseException;
 
 @SuppressLint("NewApi")
@@ -37,29 +39,29 @@ public class ProfileActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
-		
+
 		ParseQuery query = new ParseQuery("UserProfile");
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		query.getFirstInBackground(new GetCallback() {
-			
+
 			public void done(ParseObject object, ParseException e) {
 				if (object == null) {
 					setContentView(R.layout.activity_profile);
-					setTitle(R.string.app_name);
+					/*setTitle(R.string.app_name);*/
 					Log.d(TAG, "The getFirst request failed.");
 				} else {
 					Log.i(TAG, (String) object.get("height"));
-					
+
 					setContentView(R.layout.activity_profile);
-					setTitle(R.string.app_name);
+					/*setTitle(R.string.app_name);*/
 					populateValues(object);
-					
+
 				}
 			}
 		});
-		
-			
-		
+
+
+
 
 	}
 
@@ -69,10 +71,10 @@ public class ProfileActivity extends Activity {
 		Log.i(TAG, userProfile.getString("allergies"));
 		EditText editTextAllergies = (EditText) findViewById(R.id.allergies);
 		if(editTextAllergies == null)
-		Log.i(TAG, "editTextAllergies is null");
+			Log.i(TAG, "editTextAllergies is null");
 		editTextAllergies.setText(userProfile.getString("allergies"));
-		
-		
+
+
 		EditText editTextLongTermIllness = (EditText) findViewById(R.id.longTermIllness);
 		editTextLongTermIllness.setText(userProfile.getString("longTermIllness"));
 		Log.i(TAG, userProfile.getString("longTermIllness"));
@@ -105,10 +107,10 @@ public class ProfileActivity extends Activity {
 		ParseQuery query = new ParseQuery("UserProfile");
 		query.whereEqualTo("user", currentUser);
 		query.getFirstInBackground(new GetCallback() {
-			
+
 			public void done(ParseObject object, ParseException e) {
 				if (object == null) {
-					
+
 					Log.d(TAG, "The getFirst request failed.");
 				} else {
 					userProfile = object;
@@ -120,6 +122,37 @@ public class ProfileActivity extends Activity {
 
 
 		return userProfile;
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.patientmenu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.profile:
+			Intent profileActivity = new Intent(this, ProfileActivity.class);
+			startActivity(profileActivity); 
+			break;
+		case R.id.symptom:
+			Intent symptomActivity = new Intent(this, SymptomActivity.class);
+			startActivity(symptomActivity); 
+			break;
+		case R.id.help:
+			Intent helpActivity = new Intent(this, HelpActivity.class);
+			startActivity(helpActivity); 
+			break;
+		case R.id.logout:
+			Intent logoutActivity = new Intent(this, LogoutActivity.class);
+			startActivity(logoutActivity); 
+			break;
+		default:
+			break;
+		}
+		return true;
 	}
 
 	@SuppressLint({ "NewApi", "NewApi" })
@@ -145,7 +178,7 @@ public class ProfileActivity extends Activity {
 			ParseQuery query = new ParseQuery("UserProfile");
 			query.whereEqualTo("user", ParseUser.getCurrentUser());
 			query.getFirstInBackground(new GetCallback() {
-				
+
 				public void done(ParseObject object, ParseException e) {
 					if (object == null) {
 						ParseObject myProfile = new ParseObject("UserProfile");
@@ -157,6 +190,7 @@ public class ProfileActivity extends Activity {
 						myProfile.put("user", ParseUser.getCurrentUser());
 						myProfile.saveInBackground();
 						Log.d(TAG, "Profile created successfully");
+						Toast.makeText(getApplicationContext(), "Profile created sucessfully", Toast.LENGTH_SHORT).show();
 					} else {
 						object.put("allergies", allergies);
 						object.put("longTermIllness", longTermIllness);
@@ -166,12 +200,13 @@ public class ProfileActivity extends Activity {
 						object.put("user", ParseUser.getCurrentUser());
 						object.saveInBackground();
 						Log.i(TAG, "Profile updated successfully");
+						Toast.makeText(getApplicationContext(), "Profile updated sucessfully", Toast.LENGTH_SHORT).show();
 					}
 				}
 			});
-			
+
 			/*ParseUser currentUser = ParseUser.getCurrentUser();
-			
+
 
 
 

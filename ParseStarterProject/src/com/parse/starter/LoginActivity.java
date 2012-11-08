@@ -31,17 +31,20 @@ public class LoginActivity extends Activity {
 		setTitle(R.string.app_name);
 
 		setContentView(R.layout.activity_login);
-		Log.d(TAG, "Inside login activity");
+		Log.d("loginact" , "Inside login activity");
 		TextView loginButton = (TextView) findViewById(R.id.btnLogin);
 		loginButton.setOnClickListener(loginClickListener);// Listening to LOGIN button click
 		
 		TextView registerScreen = (TextView) findViewById(R.id.link_to_register);
 		registerScreen.setOnClickListener(registerClickListener);// Listening to register new account link
+		
+		TextView resetScreen = (TextView) findViewById(R.id.link_to_reset);
+		resetScreen.setOnClickListener(resetPasswordClickListener);// Listening to reset password
 	}
 	
 	private OnClickListener loginClickListener = new OnClickListener() {
 		public void onClick(View v) {
-			Log.d(TAG, "Login button clicked!");
+			Log.d("login clicked" , "Login button clicked!");
 			EditText editTextUserName = (EditText) findViewById(R.id.login_username);
 			String username = editTextUserName.getText().toString();
 
@@ -51,10 +54,19 @@ public class LoginActivity extends Activity {
 			ParseUser.logInInBackground(username, password, new LogInCallback() {
 				public void done(ParseUser user, ParseException e) {
 					if (user != null) {
-						Log.d(TAG, "User succesfully logged in!");
+						Log.d("info" , "User succesfully logged in!");
 						// Hooray! The user is logged in.
+						if(user.getBoolean("emailVerified"))
+						{
 						Intent homeIntent = new Intent(getApplicationContext(), PatientHomeActivity.class);
 						startActivity(homeIntent);
+						}
+						else
+						{
+							Toast.makeText(getApplicationContext(), "A verification link has been sent to your email address. Please verify the same and login again!", Toast.LENGTH_SHORT).show();
+			      	    	Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+			      	    	startActivity(mainIntent);
+						}
 
 					} else {
 						// Login failed. Look at the ParseException to see what happened.
@@ -70,6 +82,14 @@ public class LoginActivity extends Activity {
 		public void onClick(View v) {
 			// Switching to Register screen
 			Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+			startActivity(i);	
+		}
+	};
+	
+	private OnClickListener resetPasswordClickListener = new OnClickListener() {
+		public void onClick(View v) {
+			// Switching to Register screen
+			Intent i = new Intent(getApplicationContext(), ResetPasswordActivity.class);
 			startActivity(i);	
 		}
 	};

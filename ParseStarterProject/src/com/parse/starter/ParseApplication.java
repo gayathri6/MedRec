@@ -20,17 +20,7 @@ public class ParseApplication extends Application {
 		// Add your initialization code here
 		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
 		ParseUser.enableAutomaticUser();
-       /* ParseObject testObject = new ParseObject("testObject");
-        testObject.put("name", "Gayathri");
-        
-        testObject.saveInBackground();
-		
-		ParseACL defaultACL = new ParseACL();
-	    
-		// If you would like all objects to be private by default, remove this line.
-		defaultACL.setPublicReadAccess(true);
-		
-		ParseACL.setDefaultACL(defaultACL, true); */
+     
 	}
 
 }

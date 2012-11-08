@@ -21,7 +21,7 @@ public class DoctorHomeActivity  extends Activity   {
 		super.onCreate(savedInstanceState);
 		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
 		setContentView(R.layout.activity_doctor_home);		
-		setTitle(R.string.app_name);
+		/*setTitle(R.string.app_name);*/
 	}
 
 	@Override

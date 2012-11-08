@@ -22,7 +22,7 @@ public class PatientHomeActivity  extends Activity   {
 		super.onCreate(savedInstanceState);
 		Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
 		setContentView(R.layout.activity_patient_home);	
-		setTitle(R.string.app_name);
+		/*setTitle(R.string.app_name);*/
 		
 	}
 
@@ -33,20 +33,27 @@ public class PatientHomeActivity  extends Activity   {
 	}
 	
 	 @Override
-	    public boolean onOptionsItemSelected(MenuItem item) {
-	      switch (item.getItemId()) {
-	      case R.id.profile:
-	        Intent profileActivity = new Intent(this, ProfileActivity.class);
-	        startActivity(profileActivity); 
-	        break;
-	      case R.id.help:
-	    	    Log.i(TAG , "Inside patient home : Help activity");
-		        Intent helpActivity = new Intent(this, HelpActivity.class);
-		        startActivity(helpActivity); 
-		        break;
-	      default:
-	        break;
-	      }
-	      return true;
-	      }
+		public boolean onOptionsItemSelected(MenuItem item) {
+			switch (item.getItemId()) {
+			case R.id.profile:
+				Intent profileActivity = new Intent(this, ProfileActivity.class);
+				startActivity(profileActivity); 
+				break;
+			case R.id.symptom:
+				Intent symptomActivity = new Intent(this, SymptomActivity.class);
+				startActivity(symptomActivity); 
+				break;
+			case R.id.help:
+				Intent helpActivity = new Intent(this, HelpActivity.class);
+				startActivity(helpActivity); 
+				break;
+			case R.id.logout:
+				Intent logoutActivity = new Intent(this, LogoutActivity.class);
+				startActivity(logoutActivity); 
+				break;
+			default:
+				break;
+			}
+			return true;
+		}
 }
